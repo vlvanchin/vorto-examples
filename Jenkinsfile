@@ -24,6 +24,13 @@ pipeline {
 				archive 'target/*.jar'
 			}
 		}
+		stage('UploadToS3'){
+			steps{
+				withAWS(region:'eu-central-1',credentials:'aws-s3-vorto-jenkins-technical-user') {
+					s3Upload acl: 'Private', bucket: 'pr-vorto-documents', cacheControl: '', excludePathPattern: '', file: 'vorto-generators/generator-runner/target/generator-runner-3rd-party-exec.jar', includePathPattern: '', metadatas: [''], path: 'example-generators/generator-runner-3rd-party-exec.jar', sseAlgorithm: '', workingDir: ''
+				}
+			}
+		}		
 	}
 }
 

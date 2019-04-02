@@ -65,4 +65,9 @@ Changelog of Git Changelog.
 {{/tags}}''', to: [type: 'REF', value: 'fix-build']
       currentBuild.description = changelogString
    }
+   stage('UploadToS3') {
+      withAWS(region:'eu-central-1',credentials:'aws-s3-vorto-jenkins-technical-user') {
+          s3Upload( bucket: 'pr-vorto-documents',  file: 'vorto-generators/generator-runner/target/generator-runner-3rd-party-exec.jar', path: 'example-generators/${CHANGE_ID}/${BUILD_NUMBER}/generator-runner-3rd-party-exec.jar')
+      }
+   }
 }

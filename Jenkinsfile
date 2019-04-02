@@ -11,8 +11,10 @@ pipeline {
 		}
 		stage('Build') {
 			steps{
-				withMaven(	maven: 'maven_3.3.9') {
-					sh 'mvn -P coverage clean install'
+				dir('vorto-generators') {
+					withMaven(	maven: 'maven_3.3.9') {
+						sh 'mvn -P coverage clean install'
+					}
 				}
 			}
 		}

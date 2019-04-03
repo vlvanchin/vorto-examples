@@ -27,7 +27,7 @@ pipeline {
 		stage('UploadToS3'){
 			steps{
 				withAWS(region:'eu-central-1',credentials:'aws-s3-vorto-jenkins-technical-user') {
-					s3Upload (file: 'vorto-generators/generator-runner/target/generator-runner-3rd-party-exec.jar', bucket: 'pr-vorto-documents',  path: 'example-generators/generator-runner-3rd-party-exec.jar')
+					s3Upload (file: 'vorto-generators/generator-runner/target/generator-runner-3rd-party-exec.jar', bucket: 'pr-vorto-documents',  path: 'generator-runner-3rd-party-exec.jar')
 				}
 			}
 		}		

@@ -48,6 +48,6 @@ public class GeneratorConfiguration extends AbstractGeneratorConfiguration {
 		addGenerator(Generator.create("/generators/thingworx.properties", ThingWorxCodeGenerator.class));
 		addGenerator(Generator.create("/generators/webui.properties", WebUIGenerator.class));
 	}
-	
-	
+
+
 }
